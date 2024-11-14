@@ -68,5 +68,41 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+document.getElementById("contactForm").addEventListener("submit", function(event) {
+    // Clear past error messages
+    document.getElementById("nameError").textContent = "";
+    document.getElementById("emailError").textContent = "";
+    document.getElementById("messageError").textContent = "";
+  
+    let isValid = true;
+  
+    // Name validation
+    const name = document.getElementById("name").value;
+    if (name.trim() === "") {
+      document.getElementById("nameError").textContent = "Name field cannot be left empty.";
+      isValid = false;
+    }
+  
+    // Email validation
+    const email = document.getElementById("email").value;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+      document.getElementById("emailError").textContent = "Please provide an active email address.";
+      isValid = false;
+    }
+  
+    // Message validation
+    const message = document.getElementById("message").value;
+    if (message.trim() === "") {
+      document.getElementById("messageError").textContent = "Message must be required.";
+      isValid = false;
+    }
+  
+    // Prevent form submission 
+    if (!isValid) {
+      event.preventDefault();
+    }
+  });
+
 
 
