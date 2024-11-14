@@ -106,3 +106,18 @@ document.getElementById("contactForm").addEventListener("submit", function(event
 
 
 
+    fetch("https://catfact.ninja/fact")
+    .then(response => response.json())
+    .then(data => {
+        const factElement = document.createElement("p");
+        factElement.textContent = `Cat Fact: ${data.fact}`;
+        
+        
+        document.getElementById("catFact").appendChild(factElement);
+    })
+    .catch(error => console.error("Error fetching data:", error));
+
+
+
+
+
